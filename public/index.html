@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>German Pronunciation Studio — Farzane Yoosefi</title>
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<style>
+:root{--ivory:#F7F5F0;--paper:#FFFFFF;--navy:#17253A;--char:#25282C;--gold:#C4A875;--line:#e6dfcf;--err:#a4262c}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--ivory);color:var(--char);font:17px/1.8 "Vazirmatn","Segoe UI",Tahoma,sans-serif;overflow-x:hidden}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header{display:flex;align-items:center;gap:12px;padding:16px 0}
+header img{height:40px;width:auto}header b{color:var(--navy);font-size:18px}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:start;padding:18px 0 40px}
+h1{color:var(--navy);font-size:clamp(26px,4.4vw,42px);line-height:1.4;margin:0 0 10px}
+.lead{margin:0 0 22px;max-width:34em}
+.studio{background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:20px;padding:22px;box-shadow:0 10px 30px rgba(20,33,61,.07)}
+textarea{width:100%;min-height:140px;resize:vertical;border:1px solid var(--line);border-radius:14px;padding:14px;font:22px/1.5 Georgia,"Segoe UI",sans-serif;direction:ltr;text-align:left;background:#fff;color:var(--char)}
+textarea:focus,button:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid rgba(184,147,74,.55);outline-offset:2px}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:10px}
+.sp{flex:1}.count{font-size:14px;color:#6b6b6b}.count.over{color:var(--err)}
+button,select{font:inherit;border-radius:12px;cursor:pointer}
+.link{background:none;border:0;color:var(--navy);text-decoration:underline}
+.go{width:100%;margin-top:14px;padding:16px;border:0;background:var(--navy);color:#fff;font-size:19px;font-weight:600;display:flex;justify-content:center;align-items:center;gap:10px;transition:background .2s}
+.go:hover:not(:disabled){background:#1d2f58}.go:disabled{opacity:.6;cursor:wait}
+.speeds{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.speeds button{padding:8px 14px;border:1px solid var(--line);background:#fff;color:var(--char)}
+.speeds button[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+.ctl{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.ctl button{padding:9px 16px;border:1px solid var(--line);background:#fff}.ctl button:disabled{opacity:.4;cursor:default}
+select{padding:8px 10px;border:1px solid var(--line);background:#fff}
+label{font-size:15px;color:#555}
+#status{margin-top:12px;min-height:28px;font-size:15px}#status.err{color:var(--err)}
+.photo img{width:100%;height:auto;border-radius:20px;display:block}
+.guide{padding:26px 0}.guide h2,.contact h2{color:var(--navy);font-size:22px}
+.guide ol{padding-inline-start:22px;margin:0}
+.contact{padding:6px 0 30px}.contact a{color:var(--navy);margin-inline-end:18px}
+footer{border-top:1px solid var(--line);padding:18px 0;font-size:14px;color:#666;display:flex;align-items:center;gap:10px}
+footer img{height:24px}
+@media(max-width:800px){.hero{grid-template-columns:1fr}.photo{order:2;max-width:380px;margin:0 auto}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+.top{position:sticky;top:0;z-index:5;background:rgba(247,245,240,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:14px;padding-block:8px}
+.mark{height:44px;width:44px;border-radius:10px;display:block}
+nav{display:flex;gap:18px;margin-inline-start:auto;font-size:15px}nav a{color:var(--navy);text-decoration:none;padding:6px 2px}nav a:hover{color:var(--gold)}
+.hero{align-items:center;padding:34px 0 28px}.hero .photo{order:2}
+.cta{display:inline-block;background:var(--navy);color:#fff;text-decoration:none;padding:14px 28px;border-radius:12px;font-weight:600;border-bottom:3px solid var(--gold)}
+.photo img{aspect-ratio:1/1;object-fit:contain;box-shadow:0 14px 40px rgba(23,37,58,.2)}
+#studio{padding:20px 0 30px}#studio h2{color:var(--navy);font-size:26px;margin:0 0 14px;text-align:center}
+.studio{max-width:760px;margin:0 auto}
+.ic{display:inline-flex;align-items:center;gap:8px}.ic svg{width:20px;height:20px}
+.contact a{display:inline-flex;align-items:center;gap:8px;text-decoration:none;border:1px solid var(--line);background:#fff;padding:10px 16px;border-radius:12px;margin:0 0 10px;margin-inline-end:12px}
+footer .mark{height:30px;width:30px;border-radius:7px}
+@media(max-width:800px){nav{gap:10px;font-size:14px}.hero .photo{order:2;max-width:560px}}
+@media(max-width:480px){nav a:nth-child(3){display:none}.brand{display:none}}
+.stage{position:relative}.stage img{display:block}
+.tip{position:absolute;left:31.5%;top:40.7%;width:max(10.5%,46px);aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;border:2px solid transparent;background:transparent;color:#fff;padding:0;cursor:pointer;display:grid;place-items:center;transition:background .2s,box-shadow .2s}
+.tip:hover{box-shadow:0 0 0 6px rgba(196,168,117,.35)}
+.tip svg,.tip .spin{grid-area:1/1;display:none;width:42%;height:42%}
+.tip[data-state=playing],.tip[data-state=paused],.tip[data-state=loading]{background:var(--navy);border-color:var(--gold);box-shadow:0 0 14px rgba(196,168,117,.7)}
+.tip[data-state=playing] .g-pause,.tip[data-state=paused] .g-play{display:block}
+.tip[data-state=loading] .spin{display:block;border:3px solid rgba(255,255,255,.3);border-top-color:var(--gold);border-radius:50%;animation:sp .8s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:0;margin:0;list-style:none}.steps li{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px}
+@media(max-width:640px){.steps{grid-template-columns:1fr}}
+.go[data-state=playing]{background:var(--gold);color:var(--navy)}
+body{background:radial-gradient(900px 420px at 85% -80px,rgba(196,168,117,.22),transparent 70%),radial-gradient(700px 500px at -10% 30%,rgba(23,37,58,.07),transparent 70%),linear-gradient(180deg,#F7F5F0,#F2EEE5 60%,#F7F5F0);background-attachment:fixed}
+.studio{box-shadow:0 20px 50px rgba(23,37,58,.1),0 0 0 6px rgba(255,255,255,.55)}
+.contact a small{color:#6b6b66;direction:ltr;unicode-bidi:embed}.contact a{font-weight:600;color:var(--navy)}
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap">
+ <a href="#home" aria-label="Farzane Yoosefi"><img id="logo" class="mark" alt="Farzane Yoosefi logo"></a><b class="brand" style="color:var(--navy)">Farzane Yoosefi</b>
+ <nav aria-label="ناوبری"><a href="#home">خانه</a><a href="#studio">تمرین تلفظ</a><a href="#about">درباره مدرس</a><a href="#contact">تماس</a></nav>
+</div></div>
+<div class="wrap">
+<section class="hero" id="home">
+ <div>
+  <h1>آلمانی را درست بشنوید، درست تلفظ کنید.</h1>
+  <p class="lead">جمله آلمانی خود را وارد کنید و تلفظ طبیعی آن را با صدای استاندارد آلمانی بشنوید.</p>
+  <p class="lead" style="color:#6b6b66">یک فضای ساده و حرفه‌ای برای تمرین تلفظ آلمانی، با امکان شنیدن جمله‌ها با سرعت‌های مختلف.</p>
+  <a class="cta" href="#studio">شروع تمرین تلفظ</a>
+ </div>
+ <div class="photo"><div class="stage"><img id="photo" alt="Farzane Yoosefi، مدرس زبان آلمانی، با انگشت اشاره"><button id="tip" class="tip" type="button" data-state="idle" aria-label="شنیدن تلفظ"><svg class="g-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg><svg class="g-pause" viewBox="0 0 24 24"><path d="M7 5h4v14H7zm6 0h4v14h-4z" fill="currentColor"/></svg><span class="spin"></span></button></div><p style="text-align:center;margin:10px 0 0;font-size:14px;color:#6b6b66">روی دکمه انگشت بزنید تا جمله‌تان را بشنوید.</p></div>
+</section>
+<section id="studio">
+ <h2>جمله‌ات را وارد کن و تلفظ صحیح را بشنو</h2>
+ <div class="studio">
+   <label for="txt">جمله آلمانی</label>
+   <textarea id="txt" lang="de" spellcheck="false" placeholder="جمله آلمانی خود را اینجا بنویسید..."></textarea>
+   <div class="row"><button class="link" id="clear" type="button">پاک کردن</button><span class="sp"></span><span class="count" id="cnt">0</span></div>
+   <div class="row"><label for="voice">صدا</label>
+    <select id="voice"><option value="katja">Katja (زن)</option><option value="amala">Amala (زن)</option><option value="conrad">Conrad (مرد)</option><option value="killian">Killian (مرد)</option></select></div>
+   <button class="go" id="go" type="button"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 10v4h4l5 4V6L7 10H3zm13.5 2a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4z"/></svg><span id="golbl">شنیدن تلفظ</span></button>
+   <div class="ctl" role="group" aria-label="کنترل پخش"><button id="pp" type="button" disabled>پخش</button><button id="rep" type="button" disabled>پخش دوباره</button><button id="stop" type="button" disabled>توقف</button></div>
+   <p style="margin:14px 0 0;font-size:15px">سرعت پخش: <b id="spd">1.00x</b></p>
+   <div class="speeds" id="speeds"></div>
+   <div id="status" role="status" aria-live="polite"></div>
+ </div>
+</section>
+<section class="guide"><h2>چطور کار می‌کند</h2><ol class="steps"><li>جمله آلمانی را وارد کنید.</li><li>روی دکمه شنیدن تلفظ بزنید.</li><li>با سرعت دلخواه گوش کنید و تمرین کنید.</li></ol></section>
+<section class="guide" id="about"><h2>درباره مدرس</h2>
+<p>فرزانه یوسفی، مدرس زبان آلمانی؛ همراه شما برای تمرین، شنیدن و تقویت تلفظ صحیح آلمانی.</p><p>او باور دارد که تلفظ درست، پایه‌ی اعتمادبه‌نفس در مکالمه است و هر زبان‌آموز با شنیدن مکرر و تمرین آرام، گام‌به‌گام به صدای طبیعی‌تر نزدیک می‌شود. «Farzane Yoosefi — German Pronunciation Studio» فضایی ساده برای همین تمرین روزانه است: جمله‌ی خودتان را بنویسید، بشنوید، با سرعت دلخواه تکرار کنید و برای پرسش و یادگیری بیشتر، مستقیم با مدرس در ارتباط باشید.</p></section>
+<section class="contact" id="contact"><h2>تماس با مدرس</h2><div id="contact"></div></section>
+<footer><img id="flogo" class="mark" alt=""><span>© Farzane Yoosefi — German Pronunciation Studio</span><span class="sp"></span><span id="fcontact" style="display:flex;gap:14px"></span></footer>
+</div>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body></html>

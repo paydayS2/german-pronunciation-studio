@@ -1,0 +1,17 @@
+<!doctype html><html lang="fa" dir="rtl"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>عیب‌یابی تلفظ</title>
+<body style="font:16px/1.8 Tahoma,sans-serif;max-width:760px;margin:20px auto;padding:0 16px"><h1>عیب‌یابی سیستم تلفظ</h1>
+<p>این صفحه بدون تغییر چیزی، وضعیت واقعی سرور را نشان می‌دهد. نتیجه را کپی کنید و بفرستید.</p>
+<button id="b" style="padding:12px 20px;font-size:17px">اجرای آزمایش</button><pre id="o" dir="ltr" style="white-space:pre-wrap;background:#f4f1ea;padding:12px;border-radius:8px"></pre>
+<script>
+const o=document.getElementById("o"),p=t=>o.textContent+=t+"\n";
+document.getElementById("b").onclick=async()=>{o.textContent="";
+p("page: "+location.href+"\nbrowser: "+navigator.userAgent+"\nonLine: "+navigator.onLine);
+if(location.protocol==="file:"){p("RESULT: page opened from file:// -> no server exists. Open the deployed https URL instead.");return}
+try{const r=await fetch("/api/health",{cache:"no-store"});p("GET /api/health -> "+r.status+" "+(r.headers.get("content-type")||"")+"\n"+(await r.text()).slice(0,300))}catch(e){p("GET /api/health FAILED (no HTTP response): "+e.name+": "+e.message)}
+try{const t0=performance.now();const r=await fetch("/api/tts",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({text:"Ich möchte Deutsch lernen.",voice:"katja"})});
+const ct=r.headers.get("content-type")||"";p("POST /api/tts -> "+r.status+" "+ct+" provider="+r.headers.get("x-tts-provider")+" cache="+r.headers.get("x-tts-cache")+" ("+Math.round(performance.now()-t0)+" ms)");
+if(!ct.startsWith("audio/")){p("body: "+(await r.text()).slice(0,400));return}
+const bl=await r.blob();p("audio bytes: "+bl.size+" type: "+bl.type);const a=new Audio(URL.createObjectURL(bl));
+a.onloadedmetadata=()=>p("decoded OK, duration "+a.duration.toFixed(2)+"s");a.onerror=()=>p("DECODE FAILED in this browser");
+await a.play();p("play() started -> did you hear German speech?")}catch(e){p("POST /api/tts FAILED (no HTTP response): "+e.name+": "+e.message)}}
+</script>
